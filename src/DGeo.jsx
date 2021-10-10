@@ -11,11 +11,13 @@ import {
 
 const lib = ['places'];
 
-export default function DGeo() {
+export default function DGeo(props) {
 	
+	let ubicacion = 'HOla';
 	let cordenadas = {
 		latO: '',
 		lngO: '',
+		name: '',
 	};
 	
 	const [searchBox, setSearchBox] = useState(null);
@@ -23,9 +25,10 @@ export default function DGeo() {
 	const onPlacesChangedO = () => {
 		cordenadas.latO = searchBox.getPlaces()[0].geometry.location.lat();
 		cordenadas.lngO = searchBox.getPlaces()[0].geometry.location.lng();
+		cordenadas.name = searchBox.getPlaces()[0].formatted_address;
 		
 		console.log("LatitudOrigen: ", cordenadas.latO);
-		console.log("LongitudOrigen: ", cordenadas.lngO);
+		console.log("LongitudOrigen: ", cordenadas.name);
 	}
 	const onSBLoad = ref => {
 	  setSearchBox(ref);

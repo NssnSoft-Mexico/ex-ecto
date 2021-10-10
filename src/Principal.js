@@ -27,6 +27,7 @@ class Principal extends Component {
               ,email: ''
               ,telefono: ''
               ,fecha: null
+              ,cordenadas: this.props.cordenadas
       }
     }
   }
@@ -60,19 +61,21 @@ class Principal extends Component {
     let tef = this.state.datos.telefono;
     let em = this.state.datos.email;
     let fec = this.state.datos.fecha;
+    let cor = this.state.datos.cordenadas;
     let expreg = /^[+]?[#]?[(]?[\d]{2}?[)]??[-]?[\d]{2}?[-]?[\d]{2}?[-]?[\d]{2}?[-]?[\d]{2}$/;
 
     if(!nombre || !email || !telefono ||!fecha){
       {this.diabledB()}
     }if(expreg.test(tef) && validator.isEmail(em)){
       console.log("Correctos");
+      console.log("cor", cor);
       {this.enabledB()}
       Swal.fire(
         '¡Exito!',
         'Los datos fueron guardados',
         'success'
       ).then(function() {
-        window.location.href = `/PDatos/ :${name}/ :${em}/ :${tef}/ :${fec}`;
+        window.location.href = `/PDatos/ ${name}/ ${em}/ ${tef}/ ${fec}/ ${cor}`;
       });
     }else{
       console.log("Incorrectos");
@@ -164,7 +167,9 @@ class Principal extends Component {
                     placeholderText="Fecha"
                     onChange={this.seleccionarFecha}
                 />
-                <DGeo />
+                <DGeo>
+                  {this.props.cordenadas}
+                </DGeo>
                 <button type="submit" 
                       id="bHab"
                       onClick={this.validarForm}

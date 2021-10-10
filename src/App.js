@@ -10,8 +10,8 @@ const App = ({refetch}) => {
       <Router>
         <Switch>
           <Route exact path='/'  render={(props) => <Principal {...props} refetch={refetch} />} />
-          <Route exact path='/PDatos/ :nombre/ :email/ :telefono/ :fecha'  render={() => <PDatos refetch={refetch} />} />
-          <Route exact path='/DGeo' render={() => <DGeo refetch={refetch} />} />
+          <Route exact path='/PDatos/ :nombre/ :email/ :telefono/ :fecha'  render={(props) => <PDatos {...props} refetch={refetch} />} />
+          <Route exact path='/DGeo/ :ubicacion' render={(props) => <DGeo  {...props} refetch={refetch} />} />
         </Switch>
       </Router>
     );
