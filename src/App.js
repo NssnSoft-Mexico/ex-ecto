@@ -4,14 +4,14 @@ import Principal from './Principal';
 import PDatos from './PDatos';
 import DGeo from './DGeo';
 
-const App = () => {
+const App = ({refetch}) => {
 
     return (
       <Router>
         <Switch>
-          <Route exact path='/' component={Principal} />
-          <Route exact path='/PDatos'  component={PDatos} />
-          <Route exact path='/DGeo' component={DGeo} />
+          <Route exact path='/'  render={(props) => <Principal {...props} refetch={refetch} />} />
+          <Route exact path='/PDatos/ :nombre/ :email/ :telefono/ :fecha'  render={() => <PDatos refetch={refetch} />} />
+          <Route exact path='/DGeo' render={() => <DGeo refetch={refetch} />} />
         </Switch>
       </Router>
     );

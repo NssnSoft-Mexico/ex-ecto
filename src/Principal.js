@@ -56,8 +56,10 @@ class Principal extends Component {
     const {  nombre,email,telefono, fecha }= this.state.datos;
     const noValido = !nombre || !email || !telefono ||!fecha;
 
+    let name = this.state.datos.nombre;
     let tef = this.state.datos.telefono;
     let em = this.state.datos.email;
+    let fec = this.state.datos.fecha;
     let expreg = /^[+]?[#]?[(]?[\d]{2}?[)]??[-]?[\d]{2}?[-]?[\d]{2}?[-]?[\d]{2}?[-]?[\d]{2}$/;
 
     if(!nombre || !email || !telefono ||!fecha){
@@ -70,7 +72,7 @@ class Principal extends Component {
         'Los datos fueron guardados',
         'success'
       ).then(function() {
-        window.location.href = "/Pdatos";
+        window.location.href = `/PDatos/ :${name}/ :${em}/ :${tef}/ :${fec}`;
       });
     }else{
       console.log("Incorrectos");
